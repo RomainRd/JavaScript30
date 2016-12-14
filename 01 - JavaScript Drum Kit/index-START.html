@@ -59,6 +59,26 @@
 
 <script>
 
+  function rollbackTransition(e) {
+    this.classList.remove('playing');
+  }
+
+  window.addEventListener('keydown', function(e) {
+      const keyPressed = e.keyCode;
+      const drumAudio = document.querySelector(`audio[data-key="${keyPressed}"]`);
+      if (drumAudio) {
+        drumAudio.currentTime = 0;
+        drumAudio.play();
+        const key = document.querySelector(`.key[data-key="${keyPressed}"]`);
+        key.classList.add('playing');
+
+        const keys = document.querySelectorAll('.key')
+        keys.forEach(key => key.addEventListener('transitionend', rollbackTransition));
+      }
+  });
+
+
+
 </script>
 
 
