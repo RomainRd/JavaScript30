@@ -90,16 +90,12 @@
 
       // HOUR
       var hour = date.getHours();
-      var hourDegrees = ((hour / 24) * 360) + 90;
+      var hourDegrees = ((hour / 12) * 360) + 90;
       hour_hand.style.transform = `rotate(${hourDegrees}deg)`;
 
     }
 
-
-
     window.setInterval(setDate, 1000);
-
-
 
   </script>
 </body>
