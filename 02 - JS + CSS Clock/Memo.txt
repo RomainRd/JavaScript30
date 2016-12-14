@@ -1,0 +1,12 @@
+1. CSS clock hand:
+  - use transform: rotate() in CSS file
+  - by default the object rotates in the middle of the object: use transform-origin: x%; to move the origin on the X axis.
+  - set default rotate at 90° to have them face upwards
+  - set a transition for the animation not to be too hard: transition: all 0.5s;
+  - use a transition-timing-funtion to update the way the object moves
+
+2. JS:
+  - setInterval to set the interval at which the hands should move
+  - A function to set the date. You have a date you find which second you are currently in then you transform into degress (make sure that you add 90° to the total because we added that to the CSS)
+  - then you add the style transform rotate by variable degrees.
+
