@@ -22,9 +22,21 @@
 
   <style>
 
-    /*
-      misc styles, nothing to do with CSS variables
-    */
+    :root {
+      --base: #ffc600;
+      --spacing: 10px;
+      --blur: 10px;
+    }
+
+    img {
+      background-color: var(--base);
+      padding: var(--spacing);
+      filter: blur(var(--blur));
+    }
+
+    .hl {
+      color: var(--base);
+    }
 
     body {
       text-align: center;
@@ -47,7 +59,19 @@
     }
   </style>
 
+
   <script>
+    const inputsAll = document.querySelectorAll('input');
+
+    function adaptToChange() {
+      let suffix = this.dataset.sizing || '';
+      document.documentElement.style.setProperty(`--${this.name}`, this.value+suffix);
+    }
+
+    inputsAll.forEach(input => {
+      input.addEventListener('change', adaptToChange);
+      input.addEventListener('mousemove', adaptToChange);
+    });
   </script>
 
 </body>
