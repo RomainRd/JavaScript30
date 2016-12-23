@@ -104,6 +104,41 @@
   </div>
 
 <script>
+
+const checkBox = document.querySelectorAll(`.item input[type='checkBox']`);
+
+let lastChecked;
+
+function processCheck(e) {
+  let inBetween = false;
+  if (e.shiftKey && this.checked ){
+    checkBox.forEach(check => {
+      console.log(check)
+      if(check === this || check === lastChecked){
+        inBetween = !inBetween;
+        console.log(`checkpoint: ${inBetween}`);
+      }
+
+      if (inBetween === true) {
+        check.checked = true;
+      }
+    });
+    };
+    lastChecked = this;
+  }
+
+checkBox.forEach(check => check.addEventListener('click', processCheck));
+
+// 1. on va chercher toutes le checkbox
+// 2. on pose un micro sur la checkbox on clicks
+// 3. on fait la méthode pour que la chose comprenne quel est l'array de check est de ça à ça
+  // on a besoin d'une variable last checked pour savoir quelle est la derniere qui a été pressionnée
+  // On a besoin de vériiers que shiftkey is down and that checkbox has been checked
+  // On fait une variable in between fausse par défault qui nous permet de trouvber la fourchette de checkbox entre les deux
+  // on fait un boucle sur chaque checknox et on tester si l'événement = la checkbox qu'on check ou lastchecked puis on implémente l'action.
+  // Dans l'action on toggle le false de inbetween
+  // Maintenant qu'on sait que inbetween est vrai aux deux endroits on fait une deuxieme if et on dit inbetween true checkbox.checked = true
+  // on
 </script>
 </body>
 </html>
